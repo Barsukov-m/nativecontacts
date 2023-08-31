@@ -1,93 +1,97 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react-native';
+import { screen, fireEvent } from '@testing-library/react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import DrawerNavigator from '../navigation/DrawerNavigator';
-import TabNavigator from '../navigation/TabNavigator';
-import NewContactStack from '../navigation/NewContactStack';
-import MeStack from '../navigation/MeStack';
+import { renderWithProvider, mockedStore } from 'utils/reduxTestUtils';
 
 describe('<DrawerNavigator />', () => {
-  it('contains an item linking to the Contacts page', async () => {
-    render(
-      <NavigationContainer>
-        <DrawerNavigator />
-      </NavigationContainer>
-    );
+	let store: any;
 
-    const contactsItem = await screen.findByText('Go to Contacts');
+	beforeEach(() => {
+		store = mockedStore;
+	});
 
-    expect(contactsItem).toBeOnTheScreen;
-  });
+	it('contains an item linking to the Contacts page', async () => {
+		renderWithProvider(
+			<NavigationContainer>
+				<DrawerNavigator />
+			</NavigationContainer>
+		);
 
-  it('shows the TabNavigator when clicking on the "Go to Contacts" item', async () => {
-    render(
-      <NavigationContainer>
-        <DrawerNavigator />
-      </NavigationContainer>
-    );
+		const contactsItem = await screen.findByText('Go to Contacts');
 
-    const contactsItem = await screen.findByText('Go to Contacts');
+		expect(contactsItem).toBeOnTheScreen;
+	});
 
-    fireEvent(contactsItem, 'press');
+	it('shows the TabNavigator when clicking on the "Go to Contacts" item', async () => {
+		renderWithProvider(
+			<NavigationContainer>
+				<DrawerNavigator />
+			</NavigationContainer>
+		);
 
-    const tabNavigatorIndicator = await screen.findByText('Native Contacts');
+		const contactsItem = await screen.findByText('Go to Contacts');
 
-    expect(tabNavigatorIndicator).toBeOnTheScreen;
-  });
+		fireEvent(contactsItem, 'press');
 
-  it('contains an item linking to the New Contact page', async () => {
-    render(
-      <NavigationContainer>
-        <DrawerNavigator />
-      </NavigationContainer>
-    );
+		const tabNavigatorIndicator = await screen.findByText('Native Contacts');
 
-    const newContactItem = await screen.findByText('Create New Contact');
+		expect(tabNavigatorIndicator).toBeOnTheScreen;
+	});
 
-    expect(newContactItem).toBeOnTheScreen;
-  });
+	it('contains an item linking to the New Contact page', async () => {
+		renderWithProvider(
+			<NavigationContainer>
+				<DrawerNavigator />
+			</NavigationContainer>
+		);
 
-  it('shows the NewContactStack when clicking on the "Create New Contact" item', async () => {
-    render(
-      <NavigationContainer>
-        <DrawerNavigator />
-      </NavigationContainer>
-    );
+		const newContactItem = await screen.findByText('Create New Contact');
 
-    const newContactItem = await screen.findByText('Create New Contact');
+		expect(newContactItem).toBeOnTheScreen;
+	});
 
-    fireEvent(newContactItem, 'press');
+	it('shows the NewContactStack when clicking on the "Create New Contact" item', async () => {
+		renderWithProvider(
+			<NavigationContainer>
+				<DrawerNavigator />
+			</NavigationContainer>
+		);
 
-    const newContactScreenIndicator = await screen.findByText('New Contact');
+		const newContactItem = await screen.findByText('Create New Contact');
 
-    expect(newContactScreenIndicator).toBeOnTheScreen;
-  });
+		fireEvent(newContactItem, 'press');
 
-  it('contains an item linking to the Profile page', async () => {
-    render(
-      <NavigationContainer>
-        <DrawerNavigator />
-      </NavigationContainer>
-    );
+		const newContactScreenIndicator = await screen.findByText('New Contact');
 
-    const profileItem = await screen.findByText('Profile');
+		expect(newContactScreenIndicator).toBeOnTheScreen;
+	});
 
-    expect(profileItem).toBeOnTheScreen;
-  });
+	it('contains an item linking to the Profile page', async () => {
+		renderWithProvider(
+			<NavigationContainer>
+				<DrawerNavigator />
+			</NavigationContainer>
+		);
 
-  it('shows the MeStack when clicking on the "Profile" item', async () => {
-    render(
-      <NavigationContainer>
-        <DrawerNavigator />
-      </NavigationContainer>
-    );
+		const profileItem = await screen.findByText('Profile');
 
-    const profileItem = await screen.findByText('Profile');
+		expect(profileItem).toBeOnTheScreen;
+	});
 
-    fireEvent(profileItem, 'press');
+	it('shows the MeStack when clicking on the "Profile" item', async () => {
+		renderWithProvider(
+			<NavigationContainer>
+				<DrawerNavigator />
+			</NavigationContainer>
+		);
 
-    const newContactScreenIndicator = await screen.findByText('Phone');
+		const profileItem = await screen.findByText('Profile');
 
-    expect(newContactScreenIndicator).toBeOnTheScreen;
-  });
+		fireEvent(profileItem, 'press');
+
+		const newContactScreenIndicator = await screen.findByText('Phone');
+
+		expect(newContactScreenIndicator).toBeOnTheScreen;
+	});
 });

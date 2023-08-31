@@ -1,33 +1,39 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { render, fireEvent } from '@testing-library/react-native';
-
+import { fireEvent } from '@testing-library/react-native';
 import ContactsStack from '../navigation/ContactsStack';
+import { renderWithProvider, mockedStore } from 'utils/reduxTestUtils';
 
 describe('<ContactsStack />', () => {
-  it('renders correctly', () => {
-    const { getByText } = render(
-      <NavigationContainer>
-        <ContactsStack />
-      </NavigationContainer>
-    );
+	let store: any;
 
-    expect(getByText('Native Contacts')).toBeDefined();
-  });
+	beforeEach(() => {
+		store = mockedStore;
+	});
 
-  it('takes you to the details screen when clicking on a contact', () => {
-    const { getAllByTestId, getByText } = render(
-      <NavigationContainer>
-        <ContactsStack />
-      </NavigationContainer>
-    );
-    const contactImages = getAllByTestId('contact-list-image');
+	it('renders correctly', () => {
+		const { getByText } = renderWithProvider(
+			<NavigationContainer>
+				<ContactsStack />
+			</NavigationContainer>
+		);
 
-    expect(contactImages).toBeDefined();
+		expect(getByText('Native Contacts')).toBeDefined();
+	});
 
-    expect(contactImages.length).toBeGreaterThan(0);
+	it('takes you to the details screen when clicking on a contact', () => {
+		const { getAllByTestId, getByText } = renderWithProvider(
+			<NavigationContainer>
+				<ContactsStack />
+			</NavigationContainer>
+		);
+		const contactImages = getAllByTestId('contact-list-image');
 
-    fireEvent(contactImages[0], 'press');
+		expect(contactImages).toBeDefined();
 
-    expect(getByText('Phone')).toBeDefined();
-  });
+		expect(contactImages.length).toBeGreaterThan(0);
+
+		fireEvent(contactImages[0], 'press');
+
+		expect(getByText('Phone')).toBeDefined();
+	});
 });

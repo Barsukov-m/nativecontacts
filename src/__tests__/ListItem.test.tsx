@@ -3,48 +3,66 @@ import { ListItem } from '../components/ListItem';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { ContactInterface } from 'types/navigationTypes';
 
-jest.mock('react-native-vector-icons/MaterialIcons');
-
 // Mock the navigation
 const mockNavigate = jest.fn();
 const navigation: any = {
-  navigate: mockNavigate,
+	navigate: mockNavigate,
 };
 
+jest.mock('react-native-vector-icons/MaterialIcons');
+
 describe('<ListItem />', () => {
-  const contact: ContactInterface = {
-    name: {
-      first: 'Maria',
-      last: 'Hauser',
-    },
-    phone: '0386-6098000',
-    picture: {
-      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/22.jpg',
-    },
-  };
+	const contact: ContactInterface = {
+		firstName: 'Terry',
+		lastName: 'Medhurst',
+		phone: '+63 791 675 8914',
+		image: 'https://robohash.org/hicveldicta.png',
+	};
 
-  it('renders the contact name', () => {
-    const { getByText } = render(
-      <ListItem contact={contact} navigation={navigation} />
-    );
-    expect(getByText('Maria Hauser')).toBeDefined();
-  });
+	it('renders the contact name', () => {
+		const { getByText } = render(
+			<ListItem contact={contact} navigation={navigation} />
+		);
+		expect(getByText('Terry Medhurst')).toBeDefined();
+	});
 
-  it('renders the contact profile image when available', () => {
-    const { getByTestId } = render(
-      <ListItem contact={contact} navigation={navigation} />
-    );
-    const image = getByTestId('contact-list-image');
-    expect(image.props.source.uri).toBe(contact.picture?.thumbnail);
-  });
+	it('renders the contact profile image when available', () => {
+		const { getByTestId } = render(
+			<ListItem contact={contact} navigation={navigation} />
+		);
+		const image = getByTestId('contact-list-image');
+		expect(image.props.source.uri).toBe(contact.image);
+	});
 
-  it('navigates to Details screen when pressed', () => {
-    const { getByTestId } = render(
-      <ListItem contact={contact} navigation={navigation} />
-    );
-    const listItem = getByTestId('contact-list-image');
-    fireEvent.press(listItem);
+	it('renders the person icon when contact profile image is not available', () => {
+		const { queryByTestId } = render(
+			<ListItem
+				contact={{
+					firstName: contact.firstName,
+					lastName: contact.lastName,
+					phone: contact.phone,
+				}}
+				navigation={navigation}
+			/>
+		);
 
-    expect(mockNavigate).toHaveBeenCalledWith('Details', { contact });
-  });
+		expect(queryByTestId('contact-list-image')).not.toBeTruthy();
+
+		expect(Icon).toHaveBeenCalledWith(
+			expect.objectContaining({
+				name: 'person',
+			}),
+			{}
+		);
+	});
+
+	it('navigates to Details screen when pressed', () => {
+		const { getByTestId } = render(
+			<ListItem contact={contact} navigation={navigation} />
+		);
+		const listItem = getByTestId('contact-list-image');
+		fireEvent.press(listItem);
+
+		expect(mockNavigate).toHaveBeenCalledWith('Details', { contact });
+	});
 });

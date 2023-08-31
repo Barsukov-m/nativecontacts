@@ -3,18 +3,27 @@ import { ContactInterface } from 'types/navigationTypes';
 
 type AddContactAction = PayloadAction<ContactInterface>;
 type RemoveContactAction = PayloadAction<number>;
+type SetContactsAction = PayloadAction<ContactInterface[]>;
 
 export const addContact = (
-  state: ContactInterface[],
-  action: AddContactAction
+	state: { contacts: ContactInterface[] },
+	action: AddContactAction
 ) => {
-  state.push(action.payload);
+	state.contacts.push(action.payload);
 };
 
 export const removeContact = (
-  state: ContactInterface[],
-  action: RemoveContactAction
+	state: { contacts: ContactInterface[] },
+	action: RemoveContactAction
 ) => {
-  const { payload: index } = action;
-  state.splice(index, 1);
+	const { payload: id } = action;
+	state.contacts = state.contacts.filter((contact) => contact.id !== id);
+};
+
+export const setContacts = (
+	state: { contacts: ContactInterface[] },
+	action: SetContactsAction
+) => {
+	const { payload: contacts } = action;
+	return contacts;
 };

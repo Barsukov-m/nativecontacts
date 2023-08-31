@@ -1,10 +1,16 @@
-import { render } from '@testing-library/react-native';
 import AppNavigator from '../navigation/AppNavigator';
+import { renderWithProvider, mockedStore } from 'utils/reduxTestUtils';
 
 describe('<AppNavigator />', () => {
-  it('renders correctly', () => {
-    const { getByText } = render(<AppNavigator />);
+	let store: any;
 
-    expect(getByText('Native Contacts')).toBeDefined();
-  });
+	beforeEach(() => {
+		store = mockedStore;
+	});
+
+	it('renders correctly', () => {
+		const { getByText } = renderWithProvider(<AppNavigator />);
+
+		expect(getByText('Native Contacts')).toBeDefined();
+	});
 });
