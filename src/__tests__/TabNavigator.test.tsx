@@ -8,16 +8,25 @@ jest.mock('react-native-vector-icons/MaterialIcons');
 describe('<TabNavigator />', () => {
 	let store: any;
 
-	beforeEach(() => {
-		store = mockedStore;
-	});
-
-	it('renders the Contacts tab with correct icon and label', () => {
-		const { getByText } = renderWithProvider(
+	const renderComponent = () =>
+		renderWithProvider(
 			<NavigationContainer>
 				<TabNavigator />
 			</NavigationContainer>
 		);
+
+	beforeEach(() => {
+		store = mockedStore;
+	});
+
+	it('renders correctly', () => {
+		const tree = renderComponent();
+
+		expect(tree).toMatchSnapshot();
+	});
+
+	it('renders the Contacts tab with correct icon and label', () => {
+		const { getByText } = renderComponent();
 
 		// Check for the label
 		expect(getByText('Contacts')).toBeTruthy();
@@ -32,11 +41,7 @@ describe('<TabNavigator />', () => {
 	});
 
 	it('renders the New Contact tab with correct icon and label', () => {
-		const { getByText } = renderWithProvider(
-			<NavigationContainer>
-				<TabNavigator />
-			</NavigationContainer>
-		);
+		const { getByText } = renderComponent();
 
 		expect(getByText('New Contact')).toBeTruthy();
 
@@ -49,11 +54,7 @@ describe('<TabNavigator />', () => {
 	});
 
 	it('renders the Me tab with correct icon and label', () => {
-		const { getByText } = renderWithProvider(
-			<NavigationContainer>
-				<TabNavigator />
-			</NavigationContainer>
-		);
+		const { getByText } = renderComponent();
 
 		expect(getByText('Me')).toBeTruthy();
 

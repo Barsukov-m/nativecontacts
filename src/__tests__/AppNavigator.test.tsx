@@ -9,8 +9,11 @@ describe('<AppNavigator />', () => {
 	});
 
 	it('renders correctly', () => {
-		const { getByText } = renderWithProvider(<AppNavigator />);
+		const tree = renderWithProvider(<AppNavigator />);
+		const { getByText } = tree;
 
 		expect(getByText('Native Contacts')).toBeDefined();
+
+		expect(tree).toMatchSnapshot();
 	});
 });

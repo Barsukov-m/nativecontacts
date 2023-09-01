@@ -18,6 +18,22 @@ describe('<CustomHeader />', () => {
 		jest.clearAllMocks();
 	});
 
+	it('renders correctly', () => {
+		const tree = render(
+			<CustomHeader
+				navigation={navigation}
+				route={{ name: 'Home' }}
+				title="Home"
+			/>
+		);
+
+		const { getByText } = tree;
+
+		expect(getByText('Home')).toBeTruthy();
+
+		expect(tree).toMatchSnapshot();
+	});
+
 	it('renders the left arrow icon when route name is not "Home"', () => {
 		render(
 			<CustomHeader

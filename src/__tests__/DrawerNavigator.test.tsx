@@ -7,16 +7,25 @@ import { renderWithProvider, mockedStore } from 'utils/reduxTestUtils';
 describe('<DrawerNavigator />', () => {
 	let store: any;
 
-	beforeEach(() => {
-		store = mockedStore;
-	});
-
-	it('contains an item linking to the Contacts page', async () => {
+	const renderComponent = () =>
 		renderWithProvider(
 			<NavigationContainer>
 				<DrawerNavigator />
 			</NavigationContainer>
 		);
+
+	beforeEach(() => {
+		store = mockedStore;
+	});
+
+	it('renders correctly', () => {
+		const tree = renderComponent();
+
+		expect(tree).toMatchSnapshot();
+	});
+
+	it('contains an item linking to the Contacts page', async () => {
+		renderComponent();
 
 		const contactsItem = await screen.findByText('Go to Contacts');
 
@@ -24,11 +33,7 @@ describe('<DrawerNavigator />', () => {
 	});
 
 	it('shows the TabNavigator when clicking on the "Go to Contacts" item', async () => {
-		renderWithProvider(
-			<NavigationContainer>
-				<DrawerNavigator />
-			</NavigationContainer>
-		);
+		renderComponent();
 
 		const contactsItem = await screen.findByText('Go to Contacts');
 
@@ -40,11 +45,7 @@ describe('<DrawerNavigator />', () => {
 	});
 
 	it('contains an item linking to the New Contact page', async () => {
-		renderWithProvider(
-			<NavigationContainer>
-				<DrawerNavigator />
-			</NavigationContainer>
-		);
+		renderComponent();
 
 		const newContactItem = await screen.findByText('Create New Contact');
 
@@ -52,11 +53,7 @@ describe('<DrawerNavigator />', () => {
 	});
 
 	it('shows the NewContactStack when clicking on the "Create New Contact" item', async () => {
-		renderWithProvider(
-			<NavigationContainer>
-				<DrawerNavigator />
-			</NavigationContainer>
-		);
+		renderComponent();
 
 		const newContactItem = await screen.findByText('Create New Contact');
 
@@ -68,11 +65,7 @@ describe('<DrawerNavigator />', () => {
 	});
 
 	it('contains an item linking to the Profile page', async () => {
-		renderWithProvider(
-			<NavigationContainer>
-				<DrawerNavigator />
-			</NavigationContainer>
-		);
+		renderComponent();
 
 		const profileItem = await screen.findByText('Profile');
 
@@ -80,11 +73,7 @@ describe('<DrawerNavigator />', () => {
 	});
 
 	it('shows the MeStack when clicking on the "Profile" item', async () => {
-		renderWithProvider(
-			<NavigationContainer>
-				<DrawerNavigator />
-			</NavigationContainer>
-		);
+		renderComponent();
 
 		const profileItem = await screen.findByText('Profile');
 

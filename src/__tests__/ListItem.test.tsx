@@ -19,32 +19,31 @@ describe('<ListItem />', () => {
 		image: 'https://robohash.org/hicveldicta.png',
 	};
 
-	it('renders the contact name', () => {
-		const { getByText } = render(
-			<ListItem contact={contact} navigation={navigation} />
-		);
+	const renderComponent = (contact: ContactInterface) =>
+		render(<ListItem contact={contact} navigation={navigation} />);
+
+	it('renders correctly and renders the contact name', () => {
+		const tree = renderComponent(contact);
+		const { getByText } = tree;
+
 		expect(getByText('Terry Medhurst')).toBeDefined();
+
+		expect(tree).toMatchSnapshot();
 	});
 
 	it('renders the contact profile image when available', () => {
-		const { getByTestId } = render(
-			<ListItem contact={contact} navigation={navigation} />
-		);
+		const { getByTestId } = renderComponent(contact);
 		const image = getByTestId('contact-list-image');
+
 		expect(image.props.source.uri).toBe(contact.image);
 	});
 
 	it('renders the person icon when contact profile image is not available', () => {
-		const { queryByTestId } = render(
-			<ListItem
-				contact={{
-					firstName: contact.firstName,
-					lastName: contact.lastName,
-					phone: contact.phone,
-				}}
-				navigation={navigation}
-			/>
-		);
+		const { queryByTestId } = renderComponent({
+			firstName: contact.firstName,
+			lastName: contact.lastName,
+			phone: contact.phone,
+		});
 
 		expect(queryByTestId('contact-list-image')).not.toBeTruthy();
 
@@ -57,9 +56,7 @@ describe('<ListItem />', () => {
 	});
 
 	it('navigates to Details screen when pressed', () => {
-		const { getByTestId } = render(
-			<ListItem contact={contact} navigation={navigation} />
-		);
+		const { getByTestId } = renderComponent(contact);
 		const listItem = getByTestId('contact-list-image');
 		fireEvent.press(listItem);
 
