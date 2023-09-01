@@ -3,10 +3,10 @@ import { View, TouchableNativeFeedback, Text, ScrollView } from 'react-native';
 import FormTextInput from './FormTextInput';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useAppDispatch } from '../../hooks/storeHooks';
-import { addContact } from 'store';
 import { ScreenProps } from 'types/navigationTypes';
 import { wipWarning } from '../../utils/contactsUtils';
 import styles from './styles';
+import { addContact } from 'store/apis/contacts';
 
 const NewContactScreen: React.FC<ScreenProps> = ({ navigation }) => {
 	const [firstName, setFirstName] = useState<string>('');
@@ -32,7 +32,6 @@ const NewContactScreen: React.FC<ScreenProps> = ({ navigation }) => {
 			...(city ? { city } : {}),
 			...(company ? { name: company } : {}),
 		};
-		console.log('New contact:', contact);
 
 		setFirstName('');
 		setLastName('');
@@ -45,6 +44,7 @@ const NewContactScreen: React.FC<ScreenProps> = ({ navigation }) => {
 
 		if (firstName && lastName && phone) {
 			dispatch(addContact(contact));
+
 			navigation.navigate('Details', { contact: contact });
 		} else {
 			navigation.navigate('Home');

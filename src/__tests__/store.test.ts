@@ -1,16 +1,40 @@
-import axios from 'axios';
+import { screen } from '@testing-library/react-native';
+import mockContacts from '../mocks/contacts';
+import profileSlice from 'store/slices/profileSlice';
+import { setProfile, store } from 'store';
+import { ContactInterface } from 'types/navigationTypes';
+import profile from 'mocks/profile';
 
-describe('use RTK Query to fetch a list of contacts', () => {
-	it('fetches contacts successfull', async () => {
-		const data = await axios
-			.get('https://dummyjson.com/users')
-			.then((res) => res.data)
-			.catch((err) => {
-				throw new Error(err);
-			});
+describe('profile slice', () => {
+	it('should handle initial state', () => {
+		expect(profileSlice.getInitialState()).toEqual(profile);
+	});
 
-		console.log(data);
+	it('should handle setProfile', async () => {
+		const newProfile: ContactInterface = {
+			firstName: 'Terry',
+			lastName: 'Medhurst',
+			phone: '+63 791 675 8914',
+		};
 
-		expect(1).toEqual(1);
+		store.dispatch(setProfile(newProfile));
+
+		expect(store.getState().profile).toEqual(newProfile);
 	});
 });
+
+// describe('test API calls', () => {
+// 	it('should return a list of contacts on a successful API call', async () => {
+// 		// test https://dummyjson.com/users
+// 		// Terry Medhurst
+
+// 	});
+// });
+
+// describe('test Redux store', () => {
+// 	it('fetches a list of contacts ', () => {
+// 		// expect(screen.getByText('Terry Medhurst')).toBeTruthy();
+// 	});
+
+// 	//
+// });

@@ -15,14 +15,8 @@ jest.mock('../store/', () => ({
 }));
 
 export const mockedStore = mockStore({
-	contacts: {
-		contacts: mockContacts,
-		status: 'idle',
-		error: null,
-	},
-	profile: {
-		profile: mockProfile,
-	},
+	contacts: mockContacts,
+	profile: mockProfile,
 });
 
 export const renderWithProvider = (component: JSX.Element) =>

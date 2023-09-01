@@ -6,26 +6,28 @@ import { renderWithProvider, mockedStore } from 'utils/reduxTestUtils';
 describe('<ContactsStack />', () => {
 	let store: any;
 
+	const renderComponent = () =>
+		renderWithProvider(
+			<NavigationContainer>
+				<ContactsStack />
+			</NavigationContainer>
+		);
+
 	beforeEach(() => {
 		store = mockedStore;
 	});
 
 	it('renders correctly', () => {
-		const { getByText } = renderWithProvider(
-			<NavigationContainer>
-				<ContactsStack />
-			</NavigationContainer>
-		);
+		const tree = renderComponent();
+		const { getByText } = tree;
 
 		expect(getByText('Native Contacts')).toBeDefined();
+
+		expect(tree).toMatchSnapshot();
 	});
 
 	it('takes you to the details screen when clicking on a contact', () => {
-		const { getAllByTestId, getByText } = renderWithProvider(
-			<NavigationContainer>
-				<ContactsStack />
-			</NavigationContainer>
-		);
+		const { getAllByTestId, getByText } = renderComponent();
 		const contactImages = getAllByTestId('contact-list-image');
 
 		expect(contactImages).toBeDefined();

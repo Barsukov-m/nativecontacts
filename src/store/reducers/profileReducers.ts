@@ -4,8 +4,8 @@ import { ContactInterface } from 'types/navigationTypes';
 type SetProfileAction = PayloadAction<ContactInterface>;
 
 export const setProfile = (
-	state: { profile: ContactInterface },
-	action: SetProfileAction
+	state: ContactInterface,
+	{ payload: profile }: SetProfileAction
 ) => {
-	state = { profile: action.payload };
+	state = profile;
 };

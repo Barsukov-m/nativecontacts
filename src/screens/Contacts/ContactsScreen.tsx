@@ -1,38 +1,27 @@
-import { useEffect } from 'react';
 import { FlatList, View, Text, ActivityIndicator } from 'react-native';
 import { ListItem } from '../../components/ListItem';
 import { ScreenProps } from 'types/navigationTypes';
-import { useAppDispatch, useAppSelector } from 'hooks/storeHooks';
-import { fetchContacts } from 'store/slices/contactsSlice';
+import { useFetchContactsQuery } from 'store/apis/contacts';
 import styles from './styles';
 
 const ContactsScreen: React.FC<ScreenProps> = ({ navigation }) => {
-	const dispatch = useAppDispatch();
-	const contacts = useAppSelector((state) => state.contacts);
-	const status = useAppSelector((state) => state.contacts.status);
-	const error = useAppSelector((state) => state.contacts.error);
+	const { data: contacts, isLoading, isError, error } = useFetchContactsQuery();
 
-	useEffect(() => {
-		if (status === 'idle') {
-			dispatch(fetchContacts());
-		}
-	}, [status, dispatch]);
-
-	if (status === 'loading') {
+	if (isLoading) {
 		return (
 			<View style={styles.loading}>
 				<ActivityIndicator size="large" />
 			</View>
 		);
-	} else if (status === 'failed') {
-		return <Text>Error: {error}</Text>;
+	} else if (isError && 'data' in error) {
+		return <Text>Error: {JSON.stringify(error.data)}</Text>;
 	}
 
 	return (
 		<View>
 			<FlatList
 				style={styles.container}
-				data={contacts.contacts}
+				data={contacts}
 				renderItem={({ item }) => (
 					<ListItem contact={item} navigation={navigation} />
 				)}

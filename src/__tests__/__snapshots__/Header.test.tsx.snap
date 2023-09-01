@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> renders title correctly 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#eee",
+      "paddingHorizontal": 20,
+      "paddingTop": 20,
+    }
+  }
+>
+  Icon
+  <Text
+    style={
+      {
+        "color": "#222",
+        "fontSize": 20,
+        "marginVertical": 20,
+      }
+    }
+  >
+    Marina Hauser
+  </Text>
+</View>
+`;

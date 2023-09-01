@@ -1,15 +1,16 @@
-import contactsSlice from './slices/contactsSlice';
+import contactsApi from './apis/contacts';
 import profileSlice from './slices/profileSlice';
 import { configureStore } from '@reduxjs/toolkit';
 
 export const store = configureStore({
 	reducer: {
-		contacts: contactsSlice.reducer,
+		[contactsApi.reducerPath]: contactsApi.reducer,
 		profile: profileSlice.reducer,
 	},
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware().concat(contactsApi.middleware),
 });
 
-export const { addContact, removeContact } = contactsSlice.actions;
 export const { setProfile } = profileSlice.actions;
 
 export type RootState = ReturnType<typeof store.getState>;

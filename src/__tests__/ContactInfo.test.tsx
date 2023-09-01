@@ -7,7 +7,7 @@ jest.mock('react-native-vector-icons/MaterialIcons');
 describe('<ContactInfo />', () => {
 	it('renders correctly', () => {
 		const actionButton = <Icon name="message" size={22} />;
-		const { getByText } = render(
+		const tree = render(
 			<ContactInfo
 				title="Phone"
 				data="0386-6098000"
@@ -15,6 +15,7 @@ describe('<ContactInfo />', () => {
 				actionButton={actionButton}
 			/>
 		);
+		const { getByText } = tree;
 
 		// Check for the contact info title
 		expect(getByText('Phone')).toBeDefined();
@@ -29,5 +30,8 @@ describe('<ContactInfo />', () => {
 			}),
 			{}
 		);
+
+		// Check for snapshot match
+		expect(tree).toMatchSnapshot();
 	});
 });
