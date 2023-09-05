@@ -1,23 +1,43 @@
-import thunk from 'redux-thunk';
-import configureMockStore from 'redux-mock-store';
-import { render } from '@testing-library/react-native';
+import { PropsWithChildren } from 'react';
+import { render, renderHook } from '@testing-library/react-native';
+import type { RenderOptions } from '@testing-library/react-native';
+import type { PreloadedState } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
-import { RootState } from '../store';
-import mockContacts from '../mocks/contacts';
-import mockProfile from '../mocks/profile';
+import { setupStore, type AppStore, type RootState } from '../store/index';
 
-const middlewares = [thunk];
-const mockStore = configureMockStore<RootState>(middlewares);
+interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
+	preloadedState?: PreloadedState<RootState>;
+	store?: AppStore;
+}
 
-jest.mock('../store/', () => ({
-	...jest.requireActual('../store/'),
-	fetchContacts: jest.fn().mockReturnValue({ type: 'MOCKED_FETCH_CONTACTS' }),
-}));
+const Wrapper = ({
+	children,
+	store,
+}: PropsWithChildren<{ store: AppStore }>): JSX.Element => {
+	return <Provider store={store}>{children}</Provider>;
+};
 
-export const mockedStore = mockStore({
-	contacts: mockContacts,
-	profile: mockProfile,
-});
+export const renderWithProviders = (
+	ui: React.ReactElement,
+	{
+		preloadedState = {} as PreloadedState<RootState>,
+		store = setupStore(preloadedState),
+		...renderOptions
+	}: ExtendedRenderOptions = {}
+) => {
+	return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) };
+};
 
-export const renderWithProvider = (component: JSX.Element) =>
-	render(<Provider store={mockedStore}>{component}</Provider>);
+export const renderHookWithProviders = <Response, Params>(
+	hook: (args: Params) => Response,
+	{
+		preloadedState,
+		store = setupStore(preloadedState),
+		...renderOptions
+	}: ExtendedRenderOptions = {}
+) => {
+	return renderHook(hook, {
+		wrapper: ({ children }) => <Wrapper store={store}>{children}</Wrapper>,
+		...renderOptions,
+	});
+};

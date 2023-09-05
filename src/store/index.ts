@@ -1,17 +1,24 @@
-import contactsApi from './apis/contacts';
-import profileSlice from './slices/profileSlice';
 import { configureStore } from '@reduxjs/toolkit';
+import { setupListeners } from '@reduxjs/toolkit/dist/query';
+import contactsApi from './apis/contacts';
+import profileReducer from './slices/profileSlice';
 
-export const store = configureStore({
-	reducer: {
-		[contactsApi.reducerPath]: contactsApi.reducer,
-		profile: profileSlice.reducer,
-	},
-	middleware: (getDefaultMiddleware) =>
-		getDefaultMiddleware().concat(contactsApi.middleware),
-});
+export const setupStore = (preloadedState = {}) => {
+	return configureStore({
+		reducer: {
+			[contactsApi.reducerPath]: contactsApi.reducer,
+			profile: profileReducer,
+		},
+		preloadedState,
+		middleware: (getDefaultMiddleware) =>
+			getDefaultMiddleware().concat(contactsApi.middleware),
+	});
+};
 
-export const { setProfile } = profileSlice.actions;
+export const store = setupStore();
 
 export type RootState = ReturnType<typeof store.getState>;
+export type AppStore = ReturnType<typeof setupStore>;
 export type AppDispatch = typeof store.dispatch;
+
+setupListeners(store.dispatch);

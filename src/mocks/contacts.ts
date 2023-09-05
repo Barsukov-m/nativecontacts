@@ -1,4 +1,4 @@
-export default [
+const mockContacts = [
 	{
 		id: 1,
 		firstName: 'Terry',
@@ -90,3 +90,5 @@ export default [
 		},
 	},
 ];
+
+export default mockContacts;

@@ -11,29 +11,40 @@ const contactsApi = createApi({
 			query: () => 'users',
 			transformResponse: (res: { users: ContactInterface[] }) => res.users,
 		}),
+		addContact: builder.mutation<ContactInterface, Partial<ContactInterface>>({
+			query: (contact: ContactInterface) => ({
+				url: 'users/add',
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(contact),
+			}),
+			onQueryStarted: (newContact, { dispatch, queryFulfilled }) => {
+				queryFulfilled.then(({ data }) => {
+					dispatch(
+						contactsApi.util.updateQueryData(
+							'fetchContacts',
+							undefined,
+							(contacts) => {
+								contacts.push(data);
+							}
+						)
+					);
+				});
+			},
+		}),
+		removeContact: builder.mutation<ContactInterface, Partial<number>>({
+			query: (id: number) => ({
+				url: `users/${id}`,
+				method: 'DELETE',
+			}),
+		}),
 	}),
 });
 
-export const addContact = (contact: ContactInterface) => {
-	return contactsApi.util.updateQueryData(
-		'fetchContacts',
-		undefined,
-		(state) => {
-			state.push(contact);
-		}
-	);
-};
-
-export const removeContact = (id: number) => {
-	return contactsApi.util.updateQueryData(
-		'fetchContacts',
-		undefined,
-		(state) => {
-			state = state.filter((contact) => contact.id !== id);
-		}
-	);
-};
-
-export const { useFetchContactsQuery } = contactsApi;
+export const {
+	useFetchContactsQuery,
+	useAddContactMutation,
+	useRemoveContactMutation,
+} = contactsApi;
 
 export default contactsApi;

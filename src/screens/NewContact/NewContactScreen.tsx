@@ -6,7 +6,11 @@ import { useAppDispatch } from '../../hooks/storeHooks';
 import { ScreenProps } from 'types/navigationTypes';
 import { wipWarning } from '../../utils/contactsUtils';
 import styles from './styles';
-import { addContact } from 'store/apis/contacts';
+import {
+	addContact,
+	useAddContactMutation,
+	useRemoveContactMutation,
+} from 'store/apis/contacts';
 
 const NewContactScreen: React.FC<ScreenProps> = ({ navigation }) => {
 	const [firstName, setFirstName] = useState<string>('');
@@ -18,9 +22,12 @@ const NewContactScreen: React.FC<ScreenProps> = ({ navigation }) => {
 	const [city, setCity] = useState<string>('');
 	const [company, setCompany] = useState<string>('');
 
-	const dispatch = useAppDispatch();
+	// const dispatch = useAppDispatch();
 
-	const handleSubmit = () => {
+	const [addContact] = useAddContactMutation();
+	const [removeContact] = useRemoveContactMutation();
+
+	const handleSubmit = async () => {
 		// contact submition logic
 		const contact = {
 			firstName,
@@ -43,7 +50,7 @@ const NewContactScreen: React.FC<ScreenProps> = ({ navigation }) => {
 		setCompany('');
 
 		if (firstName && lastName && phone) {
-			dispatch(addContact(contact));
+			await addContact(contact);
 
 			navigation.navigate('Details', { contact: contact });
 		} else {

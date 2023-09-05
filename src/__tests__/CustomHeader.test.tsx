@@ -1,4 +1,4 @@
-import { fireEvent, render } from '@testing-library/react-native';
+import { fireEvent, render, screen } from '@testing-library/react-native';
 import { CustomHeader } from '../components/CustomHeader';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { ContactInterface } from 'types/navigationTypes';
@@ -99,15 +99,15 @@ describe('<CustomHeader />', () => {
 			phone: '+63 791 675 8914',
 		};
 
-		const { getByText } = render(
+		render(
 			<CustomHeader
 				navigation={navigation}
 				route={{ name: 'Details', params: { contact } }}
-				title="Terry Medhurst"
+				title="Details"
 			/>
 		);
 
-		const editIcon = getByText('edit-button');
+		const editIcon = screen.getByText(/edit-button/);
 
 		expect(editIcon).not.toBeNull();
 

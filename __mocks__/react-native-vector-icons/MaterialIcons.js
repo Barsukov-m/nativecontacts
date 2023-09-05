@@ -1,4 +1,6 @@
+import { Text } from 'react-native';
+
 // skip rendering the icon
 export default jest.fn((props) => {
-	return `Icon${props.testID ? ` [${props.testID}]` : ''}`;
+	return <Text>{`Icon${props.testID ? ` [${props.testID}]` : ''}`}</Text>;
 });
