@@ -1,5 +1,5 @@
 import { Dimensions, StyleSheet } from 'react-native';
-import colors from '../../constants/themeColors';
+import themeColors from '../../constants/themeColors';
 
 const window = Dimensions.get('window');
 
@@ -17,11 +17,11 @@ export default StyleSheet.create({
 	},
 	missingImage: {
 		alignSelf: 'center',
-		backgroundColor: colors.primaryDark,
+		backgroundColor: themeColors.primaryDark,
 		marginBottom: 15,
 		textAlign: 'center',
 		verticalAlign: 'middle',
-		color: colors.textOnPrimary,
+		color: themeColors.textOnPrimary,
 	},
 	contactName: {
 		marginVertical: 20,

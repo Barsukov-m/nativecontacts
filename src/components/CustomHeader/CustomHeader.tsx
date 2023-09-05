@@ -1,95 +1,60 @@
 import React from 'react';
-import { View, TouchableNativeFeedback, Text } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { View, Text } from 'react-native';
+import {
+	ParamListBase,
+	RouteProp,
+	useNavigation,
+	useRoute,
+} from '@react-navigation/native';
+import LeftActions from './LeftActions';
+import RightActions from './RightActions';
+import { NavigationParams } from './LeftActions';
+import { useRemoveContactMutation } from 'store/apis/contacts';
 import { ContactInterface } from '../../types/navigationTypes';
-import { wipWarning } from '../../utils/contactsUtils';
-import colors from '../../constants/themeColors';
+import { logWarning, wipWarning } from '../../utils/contactsUtils';
 import styles from './styles';
 
-interface CustomHeaderProps {
-	navigation: {
-		goBack?: () => void;
-		openDrawer?: () => void;
+export interface CustomHeaderRouteParams
+	extends RouteProp<ParamListBase, string> {
+	params: {
+		contact: ContactInterface;
 	};
-	route: {
-		name: string;
-		params?: {
-			contact?: ContactInterface;
-		};
-	};
-	title: string;
 }
 
-const CustomHeader: React.FC<CustomHeaderProps> = ({
-	navigation,
-	route,
-	title,
-}) => {
+const CustomHeader: React.FC<{ title: string }> = ({ title }) => {
+	const route = useRoute<CustomHeaderRouteParams>();
+	const navigation = useNavigation<NavigationParams>();
+	const [removeContact] = useRemoveContactMutation();
+
 	const handleEditPress = () => {
-		if (route.params?.contact) {
+		if (route.params.contact) {
 			wipWarning();
 		}
 	};
 
-	const LeftAction = (): JSX.Element => {
-		if (route.name !== 'Home') {
-			return (
-				<Icon
-					onPress={() => {
-						navigation.goBack && navigation.goBack();
-					}}
-					name="arrow-back"
-					size={20}
-					style={{ ...styles.icon, ...styles.leftAction }}
-				/>
-			);
+	const handleDeletePress = async () => {
+		const { id } = route.params.contact;
+
+		console.log('DEBUG:', route.params.contact.id);
+
+		if (id) {
+			await removeContact(id);
+			navigation.navigate('Home');
 		}
 
-		return (
-			<Icon
-				onPress={() => {
-					navigation.openDrawer && navigation.openDrawer();
-				}}
-				name="menu"
-				size={20}
-				style={{
-					...styles.icon,
-					...styles.leftAction,
-					color: colors.primaryText,
-				}}
-			/>
+		logWarning(
+			'Something went wrong',
+			`Contact with the provided ID: ${id} not found.`
 		);
-	};
-
-	const RightAction = (): JSX.Element | null => {
-		if (route.params && route.params.contact) {
-			return (
-				<TouchableNativeFeedback onPress={handleEditPress}>
-					<View>
-						<Icon
-							name="mode"
-							size={20}
-							style={{
-								...styles.icon,
-								...styles.editBtn,
-							}}
-							testID="edit-button"
-						/>
-					</View>
-				</TouchableNativeFeedback>
-			);
-		}
-
-		return null;
 	};
 
 	return (
 		<View style={styles.header}>
 			<View style={styles.titleWrapper}>
-				<LeftAction />
+				<LeftActions />
 				<Text style={styles.title}>{title}</Text>
 			</View>
-			<RightAction />
+			<RightActions onEdit={handleEditPress} onDelete={handleDeletePress} />
 		</View>
 	);
 };

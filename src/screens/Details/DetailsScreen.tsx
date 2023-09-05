@@ -10,14 +10,14 @@ import { ContactInterface } from '../../types/navigationTypes';
 
 interface DetailsScreenProp extends ScreenProps {
 	route: {
-		params?: {
-			contact?: ContactInterface;
+		params: {
+			contact: ContactInterface;
 		};
 	};
 }
 
 const DetailsScreen: React.FC<DetailsScreenProp> = ({ route }) => {
-	const { contact } = route.params as { contact: ContactInterface };
+	const { contact } = route.params;
 	const {
 		firstName,
 		lastName,

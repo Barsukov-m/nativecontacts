@@ -1,5 +1,5 @@
 import { Dimensions, StyleSheet } from 'react-native';
-import colors from '../../constants/themeColors';
+import themeColors from '../../constants/themeColors';
 
 const window = Dimensions.get('window');
 
@@ -8,33 +8,33 @@ export default StyleSheet.create({
 		flex: 1,
 		justifyContent: 'space-between',
 		padding: 20,
-		backgroundColor: colors.background,
+		backgroundColor: themeColors.background,
 	},
 	addNew: {
 		alignSelf: 'center',
-		backgroundColor: colors.primaryDark,
+		backgroundColor: themeColors.primaryDark,
 		width: window.width / 5,
 		height: window.width / 5,
 		marginBottom: 15,
 		borderRadius: window.width / 5,
 		textAlign: 'center',
 		verticalAlign: 'middle',
-		color: colors.textOnPrimary,
+		color: themeColors.textOnPrimary,
 	},
 	input: {
 		height: 50,
-		backgroundColor: colors.background,
+		backgroundColor: themeColors.background,
 		borderRadius: 5,
-		borderColor: colors.divider,
+		borderColor: themeColors.divider,
 		borderWidth: 1,
 		marginTop: 15,
 		paddingLeft: 15,
 	},
 	errorLabel: {
-		color: colors.error,
+		color: themeColors.error,
 	},
 	buttonContainer: {
-		backgroundColor: colors.primary,
+		backgroundColor: themeColors.primary,
 		marginTop: 15,
 		paddingHorizontal: 15,
 		paddingVertical: 12,
@@ -42,7 +42,7 @@ export default StyleSheet.create({
 		alignItems: 'center',
 	},
 	buttonText: {
-		color: colors.textOnPrimary,
+		color: themeColors.textOnPrimary,
 		fontSize: 16,
 		fontWeight: 'bold',
 	},

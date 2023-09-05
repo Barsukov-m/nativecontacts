@@ -15,9 +15,10 @@ export const getHeaderTitleByContact = (contact: ContactInterface) => {
 	return `${firstName} ${lastName}`;
 };
 
+export const logWarning = (title: string, message: string) => {
+	Alert.alert(title, message);
+};
+
 export const wipWarning = () => {
-	Alert.alert(
-		'Work in Progress 🤫',
-		'This feature is currently in development'
-	);
+	logWarning('Work in Progress 🤫', 'This feature is currently in development');
 };

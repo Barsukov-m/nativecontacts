@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import colors from '../../constants/themeColors';
+import themeColors from '../../constants/themeColors';
 
 export default StyleSheet.create({
 	listItem: {
@@ -19,8 +19,8 @@ export default StyleSheet.create({
 		borderRadius: 40 / 2,
 	},
 	missingImage: {
-		backgroundColor: colors.primaryDark,
-		color: colors.textOnPrimary,
+		backgroundColor: themeColors.primaryDark,
+		color: themeColors.textOnPrimary,
 		textAlign: 'center',
 		verticalAlign: 'middle',
 	},

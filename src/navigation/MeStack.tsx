@@ -23,13 +23,7 @@ const MeStack = () => {
 						const { contact } = route.params as { contact: ContactInterface };
 						const title = getHeaderTitleByContact(contact);
 
-						return (
-							<CustomHeader
-								navigation={navigation}
-								route={route}
-								title={title}
-							/>
-						);
+						return <CustomHeader title={title} />;
 					},
 				})}
 			/>

@@ -2,15 +2,11 @@ import { useState } from 'react';
 import { View, TouchableNativeFeedback, Text, ScrollView } from 'react-native';
 import FormTextInput from './FormTextInput';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { useAppDispatch } from '../../hooks/storeHooks';
 import { ScreenProps } from 'types/navigationTypes';
 import { wipWarning } from '../../utils/contactsUtils';
 import styles from './styles';
-import {
-	addContact,
-	useAddContactMutation,
-	useRemoveContactMutation,
-} from 'store/apis/contacts';
+import { useAddContactMutation } from 'store/apis/contacts';
+import { useAppSelector } from 'hooks/storeHooks';
 
 const NewContactScreen: React.FC<ScreenProps> = ({ navigation }) => {
 	const [firstName, setFirstName] = useState<string>('');
@@ -22,14 +18,12 @@ const NewContactScreen: React.FC<ScreenProps> = ({ navigation }) => {
 	const [city, setCity] = useState<string>('');
 	const [company, setCompany] = useState<string>('');
 
-	// const dispatch = useAppDispatch();
-
 	const [addContact] = useAddContactMutation();
-	const [removeContact] = useRemoveContactMutation();
 
 	const handleSubmit = async () => {
 		// contact submition logic
 		const contact = {
+			id: Date.now(),
 			firstName,
 			lastName,
 			...(maidenName ? { maidenName } : {}),

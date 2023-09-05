@@ -37,6 +37,23 @@ const contactsApi = createApi({
 				url: `users/${id}`,
 				method: 'DELETE',
 			}),
+			onQueryStarted: (id, { dispatch, queryFulfilled }) => {
+				queryFulfilled
+					.then(({ data }) => {
+						dispatch(
+							contactsApi.util.updateQueryData(
+								'fetchContacts',
+								undefined,
+								(contacts) => {
+									return contacts.filter((contact) => contact.id !== id);
+								}
+							)
+						);
+					})
+					.catch(() => {
+						console.log(`Contact with ID: ${id} not found`);
+					});
+			},
 		}),
 	}),
 });
