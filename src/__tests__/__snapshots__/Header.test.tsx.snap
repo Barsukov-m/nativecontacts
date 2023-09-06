@@ -11,7 +11,9 @@ exports[`<Header /> renders title correctly 1`] = `
     }
   }
 >
-  Icon
+  <Text>
+    Icon
+  </Text>
   <Text
     style={
       {

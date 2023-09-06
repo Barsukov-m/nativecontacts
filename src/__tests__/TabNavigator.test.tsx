@@ -1,23 +1,17 @@
 import { NavigationContainer } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import TabNavigator from '../navigation/TabNavigator';
-import { renderWithProvider, mockedStore } from 'utils/reduxTestUtils';
+import { renderWithProviders } from 'utils/reduxTestUtils';
 
 jest.mock('react-native-vector-icons/MaterialIcons');
 
 describe('<TabNavigator />', () => {
-	let store: any;
-
 	const renderComponent = () =>
-		renderWithProvider(
+		renderWithProviders(
 			<NavigationContainer>
 				<TabNavigator />
 			</NavigationContainer>
 		);
-
-	beforeEach(() => {
-		store = mockedStore;
-	});
 
 	it('renders correctly', () => {
 		const tree = renderComponent();

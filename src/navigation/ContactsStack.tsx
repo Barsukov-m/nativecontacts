@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { CustomHeader } from '../components/CustomHeader';
-import { ContactInterface, ScreenProps } from '../types/navigationTypes';
+import { ContactInterface } from '../types/navigationTypes';
 import { getHeaderTitleByContact } from '../utils/contactsUtils';
 
 // Screens
@@ -26,13 +26,7 @@ interface ContactsStackProps {
 const ContactsStack = () => {
 	const homeOptions = useCallback(
 		({ navigation, route }: ContactsStackProps) => ({
-			header: () => (
-				<CustomHeader
-					navigation={navigation}
-					route={route}
-					title="Native Contacts"
-				/>
-			),
+			header: () => <CustomHeader title="Native Contacts" route={route} />,
 		}),
 		[]
 	);
@@ -43,9 +37,7 @@ const ContactsStack = () => {
 				const { contact } = route.params as { contact: ContactInterface };
 				const title = getHeaderTitleByContact(contact);
 
-				return (
-					<CustomHeader navigation={navigation} route={route} title={title} />
-				);
+				return <CustomHeader title={title} route={route} />;
 			},
 		}),
 		[getHeaderTitleByContact]

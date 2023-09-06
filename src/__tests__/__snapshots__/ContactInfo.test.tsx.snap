@@ -48,7 +48,9 @@ exports[`<ContactInfo /> renders correctly 1`] = `
       }
     }
   >
-    Icon
+    <Text>
+      Icon
+    </Text>
     <View>
       <Text
         style={
@@ -72,6 +74,8 @@ exports[`<ContactInfo /> renders correctly 1`] = `
       </Text>
     </View>
   </View>
-  Icon
+  <Text>
+    Icon
+  </Text>
 </View>
 `;

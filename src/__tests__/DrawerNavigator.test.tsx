@@ -2,13 +2,13 @@ import React from 'react';
 import { screen, fireEvent } from '@testing-library/react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import DrawerNavigator from '../navigation/DrawerNavigator';
-import { renderWithProvider, mockedStore } from 'utils/reduxTestUtils';
+import { renderWithProviders, mockedStore } from 'utils/reduxTestUtils';
 
 describe('<DrawerNavigator />', () => {
 	let store: any;
 
 	const renderComponent = () =>
-		renderWithProvider(
+		renderWithProviders(
 			<NavigationContainer>
 				<DrawerNavigator />
 			</NavigationContainer>

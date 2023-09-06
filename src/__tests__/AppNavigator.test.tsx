@@ -1,5 +1,5 @@
 import AppNavigator from '../navigation/AppNavigator';
-import { renderWithProvider, mockedStore } from 'utils/reduxTestUtils';
+import { renderWithProviders, mockedStore } from 'utils/reduxTestUtils';
 
 describe('<AppNavigator />', () => {
 	let store: any;
@@ -9,7 +9,7 @@ describe('<AppNavigator />', () => {
 	});
 
 	it('renders correctly', () => {
-		const tree = renderWithProvider(<AppNavigator />);
+		const tree = renderWithProviders(<AppNavigator />);
 		const { getByText } = tree;
 
 		expect(getByText('Native Contacts')).toBeDefined();

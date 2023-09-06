@@ -7,23 +7,17 @@ import { NewContactScreen } from '../screens/NewContact';
 const Stack = createNativeStackNavigator();
 
 const NewContactStack = () => {
-  return (
-    <Stack.Navigator initialRouteName="NewContact">
-      <Stack.Screen
-        name="New Contact"
-        component={NewContactScreen}
-        options={({ navigation, route }) => ({
-          header: () => (
-            <CustomHeader
-              navigation={navigation}
-              route={route}
-              title="New Contact"
-            />
-          ),
-        })}
-      />
-    </Stack.Navigator>
-  );
+	return (
+		<Stack.Navigator initialRouteName="NewContact">
+			<Stack.Screen
+				name="New Contact"
+				component={NewContactScreen}
+				options={({ navigation, route }) => ({
+					header: () => <CustomHeader title="New Contact" route={route} />,
+				})}
+			/>
+		</Stack.Navigator>
+	);
 };
 
 export default NewContactStack;

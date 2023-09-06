@@ -14,15 +14,13 @@ export interface NavigationParams extends NavigationProp<ParamListBase> {
 }
 
 const LeftActions: React.FC = () => {
-	const route = useRoute();
-	const navigation = useNavigation<NavigationParams>();
+	const { name } = useRoute();
+	const { goBack, openDrawer } = useNavigation<NavigationParams>();
 
-	if (route.name !== 'Home') {
+	if (name !== 'Home') {
 		return (
 			<Icon
-				onPress={() => {
-					navigation.goBack && navigation.goBack();
-				}}
+				onPress={() => goBack()}
 				name="arrow-back"
 				size={20}
 				style={{ ...styles.icon, ...styles.leftAction }}
@@ -32,9 +30,7 @@ const LeftActions: React.FC = () => {
 
 	return (
 		<Icon
-			onPress={() => {
-				navigation.openDrawer && navigation.openDrawer();
-			}}
+			onPress={() => openDrawer()}
 			name="menu"
 			size={20}
 			style={{

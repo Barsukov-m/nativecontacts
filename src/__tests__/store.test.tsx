@@ -42,8 +42,6 @@ describe('profile slice', () => {
 			},
 		};
 
-		console.log('DEBUG:', profileReducer(initialState, setProfile(newProfile)));
-
 		expect(profileReducer(initialState, setProfile(newProfile))).toMatchObject({
 			profile: newProfile,
 		});

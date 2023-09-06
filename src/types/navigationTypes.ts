@@ -1,3 +1,4 @@
+import { ParamListBase, RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 export interface ScreenProps {
@@ -24,5 +25,11 @@ export interface ContactInterface {
 	university?: string;
 	company?: {
 		name: string;
+	};
+}
+
+export interface ContactsRouteParams extends RouteProp<ParamListBase, string> {
+	params?: {
+		contact?: ContactInterface;
 	};
 }

@@ -72,6 +72,8 @@ exports[`<ListItem /> renders correctly and renders the contact name 1`] = `
       Terry Medhurst
     </Text>
   </View>
-  Icon
+  <Text>
+    Icon
+  </Text>
 </View>
 `;

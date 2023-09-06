@@ -4,12 +4,9 @@ exports[`<AppNavigator /> renders correctly 1`] = `
 <RNCSafeAreaProvider
   onInsetsChange={[Function]}
   style={
-    [
-      {
-        "flex": 1,
-      },
-      undefined,
-    ]
+    {
+      "flex": 1,
+    }
   }
 >
   <View
@@ -20,46 +17,38 @@ exports[`<AppNavigator /> renders correctly 1`] = `
     }
   >
     <View
-      animatedStyle={
-        {
-          "value": {},
-        }
-      }
       collapsable={false}
-      forwardedRef={[Function]}
       handlerTag={1}
       handlerType="PanGestureHandler"
       onGestureHandlerEvent={[Function]}
+      onGestureHandlerStateChange={[Function]}
+      onLayout={[Function]}
       style={
-        {
-          "flex": 1,
-          "flexDirection": "row",
-          "overflow": "hidden",
-        }
+        [
+          {
+            "flex": 1,
+            "overflow": "hidden",
+          },
+          {
+            "flexDirection": "row",
+          },
+        ]
       }
     >
       <View
-        animatedStyle={
-          {
-            "value": {
+        style={
+          [
+            {
+              "flex": 1,
+            },
+            {
               "transform": [
                 {
                   "translateX": 0,
                 },
               ],
             },
-          }
-        }
-        collapsable={false}
-        style={
-          {
-            "flex": 1,
-            "transform": [
-              {
-                "translateX": 0,
-              },
-            ],
-          }
+          ]
         }
       >
         <View
@@ -296,521 +285,18 @@ exports[`<AppNavigator /> renders correctly 1`] = `
                                         ]
                                       }
                                     >
-                                      <View>
-                                        <RCTScrollView
-                                          data={
-                                            [
-                                              {
-                                                "address": {
-                                                  "city": "Washington",
-                                                },
-                                                "birthDate": "2000-12-25",
-                                                "company": {
-                                                  "name": "Blanda-O'Keefe",
-                                                },
-                                                "email": "atuny0@sohu.com",
-                                                "firstName": "Terry",
-                                                "id": 1,
-                                                "image": "https://robohash.org/hicveldicta.png",
-                                                "lastName": "Medhurst",
-                                                "maidenName": "Smitham",
-                                                "phone": "+63 791 675 8914",
-                                                "university": "Capitol University",
-                                                "username": "atuny0",
-                                              },
-                                              {
-                                                "address": {
-                                                  "city": "Louisville",
-                                                },
-                                                "birthDate": "2003-08-02",
-                                                "company": {
-                                                  "name": "Aufderhar-Cronin",
-                                                },
-                                                "email": "hbingley1@plala.or.jp",
-                                                "firstName": "Sheldon",
-                                                "id": 2,
-                                                "image": "https://robohash.org/doloremquesintcorrupti.png",
-                                                "lastName": "Quigley",
-                                                "maidenName": "Cole",
-                                                "phone": "+7 813 117 7139",
-                                                "university": "Stavropol State Technical University",
-                                                "username": "hbingley1",
-                                              },
-                                              {
-                                                "address": {
-                                                  "city": "Grass Valley",
-                                                },
-                                                "birthDate": "1992-12-30",
-                                                "company": {
-                                                  "name": "Lindgren LLC",
-                                                },
-                                                "email": "rshawe2@51.la",
-                                                "firstName": "Terrill",
-                                                "id": 3,
-                                                "image": "https://robohash.org/consequunturautconsequatur.png",
-                                                "lastName": "Hills",
-                                                "maidenName": "Hoeger",
-                                                "phone": "+63 739 292 7942",
-                                                "university": "University of Cagayan Valley",
-                                                "username": "rshawe2",
-                                              },
-                                              {
-                                                "address": {
-                                                  "city": "Manchester",
-                                                },
-                                                "birthDate": "1969-01-16",
-                                                "company": {
-                                                  "name": "Wolff and Sons",
-                                                },
-                                                "email": "yraigatt3@nature.com",
-                                                "firstName": "Miles",
-                                                "id": 4,
-                                                "image": "https://robohash.org/facilisdignissimosdolore.png",
-                                                "lastName": "Cummerata",
-                                                "maidenName": "Maggio",
-                                                "phone": "+86 461 145 4186",
-                                                "university": "Shenyang Pharmaceutical University",
-                                                "username": "yraigatt3",
-                                              },
-                                              {
-                                                "address": {
-                                                  "city": "Louisville",
-                                                },
-                                                "birthDate": "1968-11-03",
-                                                "company": {
-                                                  "name": "Adams Inc",
-                                                },
-                                                "email": "kmeus4@upenn.edu",
-                                                "firstName": "Mavis",
-                                                "id": 5,
-                                                "image": "https://robohash.org/adverovelit.png",
-                                                "lastName": "Schultz",
-                                                "maidenName": "Yundt",
-                                                "phone": "+372 285 771 1911",
-                                                "university": "Estonian University of Life Sciences",
-                                                "username": "kmeus4",
-                                              },
-                                            ]
+                                      <View
+                                        style={
+                                          {
+                                            "alignItems": "center",
+                                            "height": "100%",
+                                            "justifyContent": "center",
                                           }
-                                          getItem={[Function]}
-                                          getItemCount={[Function]}
-                                          keyExtractor={[Function]}
-                                          onContentSizeChange={[Function]}
-                                          onLayout={[Function]}
-                                          onMomentumScrollBegin={[Function]}
-                                          onMomentumScrollEnd={[Function]}
-                                          onScroll={[Function]}
-                                          onScrollBeginDrag={[Function]}
-                                          onScrollEndDrag={[Function]}
-                                          removeClippedSubviews={false}
-                                          renderItem={[Function]}
-                                          scrollEventThrottle={50}
-                                          stickyHeaderIndices={[]}
-                                          style={
-                                            {
-                                              "backgroundColor": "#fff",
-                                            }
-                                          }
-                                          viewabilityConfigCallbackPairs={[]}
-                                        >
-                                          <View>
-                                            <View
-                                              onFocusCapture={[Function]}
-                                              onLayout={[Function]}
-                                              style={null}
-                                            >
-                                              <View
-                                                accessibilityState={
-                                                  {
-                                                    "busy": undefined,
-                                                    "checked": undefined,
-                                                    "disabled": undefined,
-                                                    "expanded": undefined,
-                                                    "selected": undefined,
-                                                  }
-                                                }
-                                                accessibilityValue={
-                                                  {
-                                                    "max": undefined,
-                                                    "min": undefined,
-                                                    "now": undefined,
-                                                    "text": undefined,
-                                                  }
-                                                }
-                                                accessible={true}
-                                                focusable={true}
-                                                onClick={[Function]}
-                                                onResponderGrant={[Function]}
-                                                onResponderMove={[Function]}
-                                                onResponderRelease={[Function]}
-                                                onResponderTerminate={[Function]}
-                                                onResponderTerminationRequest={[Function]}
-                                                onStartShouldSetResponder={[Function]}
-                                                style={
-                                                  {
-                                                    "alignItems": "center",
-                                                    "flexDirection": "row",
-                                                    "justifyContent": "space-between",
-                                                    "paddingHorizontal": 20,
-                                                    "paddingVertical": 10,
-                                                  }
-                                                }
-                                              >
-                                                <View
-                                                  style={
-                                                    {
-                                                      "alignItems": "center",
-                                                      "flexDirection": "row",
-                                                    }
-                                                  }
-                                                >
-                                                  <Image
-                                                    source={
-                                                      {
-                                                        "uri": "https://robohash.org/hicveldicta.png",
-                                                      }
-                                                    }
-                                                    style={
-                                                      {
-                                                        "borderRadius": 20,
-                                                        "height": 40,
-                                                        "width": 40,
-                                                      }
-                                                    }
-                                                    testID="contact-list-image"
-                                                  />
-                                                  <Text
-                                                    style={
-                                                      {
-                                                        "color": "#000",
-                                                        "paddingLeft": 10,
-                                                      }
-                                                    }
-                                                  >
-                                                    Terry Medhurst
-                                                  </Text>
-                                                </View>
-                                                Icon
-                                              </View>
-                                            </View>
-                                            <View
-                                              onFocusCapture={[Function]}
-                                              onLayout={[Function]}
-                                              style={null}
-                                            >
-                                              <View
-                                                accessibilityState={
-                                                  {
-                                                    "busy": undefined,
-                                                    "checked": undefined,
-                                                    "disabled": undefined,
-                                                    "expanded": undefined,
-                                                    "selected": undefined,
-                                                  }
-                                                }
-                                                accessibilityValue={
-                                                  {
-                                                    "max": undefined,
-                                                    "min": undefined,
-                                                    "now": undefined,
-                                                    "text": undefined,
-                                                  }
-                                                }
-                                                accessible={true}
-                                                focusable={true}
-                                                onClick={[Function]}
-                                                onResponderGrant={[Function]}
-                                                onResponderMove={[Function]}
-                                                onResponderRelease={[Function]}
-                                                onResponderTerminate={[Function]}
-                                                onResponderTerminationRequest={[Function]}
-                                                onStartShouldSetResponder={[Function]}
-                                                style={
-                                                  {
-                                                    "alignItems": "center",
-                                                    "flexDirection": "row",
-                                                    "justifyContent": "space-between",
-                                                    "paddingHorizontal": 20,
-                                                    "paddingVertical": 10,
-                                                  }
-                                                }
-                                              >
-                                                <View
-                                                  style={
-                                                    {
-                                                      "alignItems": "center",
-                                                      "flexDirection": "row",
-                                                    }
-                                                  }
-                                                >
-                                                  <Image
-                                                    source={
-                                                      {
-                                                        "uri": "https://robohash.org/doloremquesintcorrupti.png",
-                                                      }
-                                                    }
-                                                    style={
-                                                      {
-                                                        "borderRadius": 20,
-                                                        "height": 40,
-                                                        "width": 40,
-                                                      }
-                                                    }
-                                                    testID="contact-list-image"
-                                                  />
-                                                  <Text
-                                                    style={
-                                                      {
-                                                        "color": "#000",
-                                                        "paddingLeft": 10,
-                                                      }
-                                                    }
-                                                  >
-                                                    Sheldon Quigley
-                                                  </Text>
-                                                </View>
-                                                Icon
-                                              </View>
-                                            </View>
-                                            <View
-                                              onFocusCapture={[Function]}
-                                              onLayout={[Function]}
-                                              style={null}
-                                            >
-                                              <View
-                                                accessibilityState={
-                                                  {
-                                                    "busy": undefined,
-                                                    "checked": undefined,
-                                                    "disabled": undefined,
-                                                    "expanded": undefined,
-                                                    "selected": undefined,
-                                                  }
-                                                }
-                                                accessibilityValue={
-                                                  {
-                                                    "max": undefined,
-                                                    "min": undefined,
-                                                    "now": undefined,
-                                                    "text": undefined,
-                                                  }
-                                                }
-                                                accessible={true}
-                                                focusable={true}
-                                                onClick={[Function]}
-                                                onResponderGrant={[Function]}
-                                                onResponderMove={[Function]}
-                                                onResponderRelease={[Function]}
-                                                onResponderTerminate={[Function]}
-                                                onResponderTerminationRequest={[Function]}
-                                                onStartShouldSetResponder={[Function]}
-                                                style={
-                                                  {
-                                                    "alignItems": "center",
-                                                    "flexDirection": "row",
-                                                    "justifyContent": "space-between",
-                                                    "paddingHorizontal": 20,
-                                                    "paddingVertical": 10,
-                                                  }
-                                                }
-                                              >
-                                                <View
-                                                  style={
-                                                    {
-                                                      "alignItems": "center",
-                                                      "flexDirection": "row",
-                                                    }
-                                                  }
-                                                >
-                                                  <Image
-                                                    source={
-                                                      {
-                                                        "uri": "https://robohash.org/consequunturautconsequatur.png",
-                                                      }
-                                                    }
-                                                    style={
-                                                      {
-                                                        "borderRadius": 20,
-                                                        "height": 40,
-                                                        "width": 40,
-                                                      }
-                                                    }
-                                                    testID="contact-list-image"
-                                                  />
-                                                  <Text
-                                                    style={
-                                                      {
-                                                        "color": "#000",
-                                                        "paddingLeft": 10,
-                                                      }
-                                                    }
-                                                  >
-                                                    Terrill Hills
-                                                  </Text>
-                                                </View>
-                                                Icon
-                                              </View>
-                                            </View>
-                                            <View
-                                              onFocusCapture={[Function]}
-                                              onLayout={[Function]}
-                                              style={null}
-                                            >
-                                              <View
-                                                accessibilityState={
-                                                  {
-                                                    "busy": undefined,
-                                                    "checked": undefined,
-                                                    "disabled": undefined,
-                                                    "expanded": undefined,
-                                                    "selected": undefined,
-                                                  }
-                                                }
-                                                accessibilityValue={
-                                                  {
-                                                    "max": undefined,
-                                                    "min": undefined,
-                                                    "now": undefined,
-                                                    "text": undefined,
-                                                  }
-                                                }
-                                                accessible={true}
-                                                focusable={true}
-                                                onClick={[Function]}
-                                                onResponderGrant={[Function]}
-                                                onResponderMove={[Function]}
-                                                onResponderRelease={[Function]}
-                                                onResponderTerminate={[Function]}
-                                                onResponderTerminationRequest={[Function]}
-                                                onStartShouldSetResponder={[Function]}
-                                                style={
-                                                  {
-                                                    "alignItems": "center",
-                                                    "flexDirection": "row",
-                                                    "justifyContent": "space-between",
-                                                    "paddingHorizontal": 20,
-                                                    "paddingVertical": 10,
-                                                  }
-                                                }
-                                              >
-                                                <View
-                                                  style={
-                                                    {
-                                                      "alignItems": "center",
-                                                      "flexDirection": "row",
-                                                    }
-                                                  }
-                                                >
-                                                  <Image
-                                                    source={
-                                                      {
-                                                        "uri": "https://robohash.org/facilisdignissimosdolore.png",
-                                                      }
-                                                    }
-                                                    style={
-                                                      {
-                                                        "borderRadius": 20,
-                                                        "height": 40,
-                                                        "width": 40,
-                                                      }
-                                                    }
-                                                    testID="contact-list-image"
-                                                  />
-                                                  <Text
-                                                    style={
-                                                      {
-                                                        "color": "#000",
-                                                        "paddingLeft": 10,
-                                                      }
-                                                    }
-                                                  >
-                                                    Miles Cummerata
-                                                  </Text>
-                                                </View>
-                                                Icon
-                                              </View>
-                                            </View>
-                                            <View
-                                              onFocusCapture={[Function]}
-                                              onLayout={[Function]}
-                                              style={null}
-                                            >
-                                              <View
-                                                accessibilityState={
-                                                  {
-                                                    "busy": undefined,
-                                                    "checked": undefined,
-                                                    "disabled": undefined,
-                                                    "expanded": undefined,
-                                                    "selected": undefined,
-                                                  }
-                                                }
-                                                accessibilityValue={
-                                                  {
-                                                    "max": undefined,
-                                                    "min": undefined,
-                                                    "now": undefined,
-                                                    "text": undefined,
-                                                  }
-                                                }
-                                                accessible={true}
-                                                focusable={true}
-                                                onClick={[Function]}
-                                                onResponderGrant={[Function]}
-                                                onResponderMove={[Function]}
-                                                onResponderRelease={[Function]}
-                                                onResponderTerminate={[Function]}
-                                                onResponderTerminationRequest={[Function]}
-                                                onStartShouldSetResponder={[Function]}
-                                                style={
-                                                  {
-                                                    "alignItems": "center",
-                                                    "flexDirection": "row",
-                                                    "justifyContent": "space-between",
-                                                    "paddingHorizontal": 20,
-                                                    "paddingVertical": 10,
-                                                  }
-                                                }
-                                              >
-                                                <View
-                                                  style={
-                                                    {
-                                                      "alignItems": "center",
-                                                      "flexDirection": "row",
-                                                    }
-                                                  }
-                                                >
-                                                  <Image
-                                                    source={
-                                                      {
-                                                        "uri": "https://robohash.org/adverovelit.png",
-                                                      }
-                                                    }
-                                                    style={
-                                                      {
-                                                        "borderRadius": 20,
-                                                        "height": 40,
-                                                        "width": 40,
-                                                      }
-                                                    }
-                                                    testID="contact-list-image"
-                                                  />
-                                                  <Text
-                                                    style={
-                                                      {
-                                                        "color": "#000",
-                                                        "paddingLeft": 10,
-                                                      }
-                                                    }
-                                                  >
-                                                    Mavis Schultz
-                                                  </Text>
-                                                </View>
-                                                Icon
-                                              </View>
-                                            </View>
-                                          </View>
-                                        </RCTScrollView>
+                                        }
+                                      >
+                                        <ActivityIndicator
+                                          size="large"
+                                        />
                                       </View>
                                     </View>
                                     <View
@@ -844,7 +330,9 @@ exports[`<AppNavigator /> renders correctly 1`] = `
                                             }
                                           }
                                         >
-                                          Icon
+                                          <Text>
+                                            Icon
+                                          </Text>
                                           <Text
                                             style={
                                               {
@@ -995,7 +483,9 @@ exports[`<AppNavigator /> renders correctly 1`] = `
                                 ]
                               }
                             >
-                              Icon
+                              <Text>
+                                Icon
+                              </Text>
                             </View>
                             <View
                               style={
@@ -1015,7 +505,9 @@ exports[`<AppNavigator /> renders correctly 1`] = `
                                 ]
                               }
                             >
-                              Icon
+                              <Text>
+                                Icon
+                              </Text>
                             </View>
                           </View>
                           <Text
@@ -1120,7 +612,9 @@ exports[`<AppNavigator /> renders correctly 1`] = `
                                 ]
                               }
                             >
-                              Icon
+                              <Text>
+                                Icon
+                              </Text>
                             </View>
                             <View
                               style={
@@ -1140,7 +634,9 @@ exports[`<AppNavigator /> renders correctly 1`] = `
                                 ]
                               }
                             >
-                              Icon
+                              <Text>
+                                Icon
+                              </Text>
                             </View>
                           </View>
                           <Text
@@ -1245,7 +741,9 @@ exports[`<AppNavigator /> renders correctly 1`] = `
                                 ]
                               }
                             >
-                              Icon
+                              <Text>
+                                Icon
+                              </Text>
                             </View>
                             <View
                               style={
@@ -1265,7 +763,9 @@ exports[`<AppNavigator /> renders correctly 1`] = `
                                 ]
                               }
                             >
-                              Icon
+                              <Text>
+                                Icon
+                              </Text>
                             </View>
                           </View>
                           <Text
@@ -1302,28 +802,26 @@ exports[`<AppNavigator /> renders correctly 1`] = `
         </View>
         <View
           accessibilityElementsHidden={true}
-          animatedStyle={
-            {
-              "value": {
-                "opacity": 0,
+          importantForAccessibility="no-hide-descendants"
+          style={
+            [
+              {
+                "backgroundColor": "rgba(0, 0, 0, 0.5)",
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              },
+              {},
+              {
+                "opacity": undefined,
                 "zIndex": -1,
               },
-            }
-          }
-          collapsable={false}
-          importantForAccessibility="no-hide-descendants"
-          pointerEvents="none"
-          style={
-            {
-              "backgroundColor": "rgba(0, 0, 0, 0.5)",
-              "bottom": 0,
-              "left": 0,
-              "opacity": 0,
-              "position": "absolute",
-              "right": 0,
-              "top": 0,
-              "zIndex": -1,
-            }
+              {
+                "backgroundColor": "rgba(0, 0, 0, 0.5)",
+              },
+            ]
           }
         >
           <View
@@ -1361,41 +859,55 @@ exports[`<AppNavigator /> renders correctly 1`] = `
             style={
               {
                 "flex": 1,
-                "pointerEvents": "auto",
               }
             }
           />
         </View>
       </View>
       <View
-        animatedStyle={
-          {
-            "value": {
+        onLayout={[Function]}
+        removeClippedSubviews={false}
+        style={
+          [
+            {
+              "backgroundColor": "white",
+              "maxWidth": "100%",
+            },
+            {
+              "opacity": AnimatedValue {
+                " __value": 0,
+              },
               "transform": [
                 {
-                  "translateX": -320,
+                  "translateX": 0,
                 },
               ],
             },
-          }
-        }
-        collapsable={false}
-        removeClippedSubviews={false}
-        style={
-          {
-            "backgroundColor": "rgb(255, 255, 255)",
-            "bottom": 0,
-            "maxWidth": "100%",
-            "position": "absolute",
-            "top": 0,
-            "transform": [
+            [
               {
-                "translateX": -320,
+                "bottom": 0,
+                "position": "absolute",
+                "top": 0,
+                "width": "80%",
+              },
+              {
+                "left": AnimatedValue {
+                  " __value": -320,
+                },
+              },
+              {
+                "zIndex": 0,
               },
             ],
-            "width": 320,
-            "zIndex": 0,
-          }
+            [
+              {
+                "backgroundColor": "rgb(255, 255, 255)",
+                "width": 320,
+              },
+              false,
+              undefined,
+            ],
+          ]
         }
       >
         <RCTScrollView

@@ -1,7 +1,7 @@
 import { View, TouchableNativeFeedback } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useRoute } from '@react-navigation/native';
-import { CustomHeaderRouteParams } from './CustomHeader';
+import { ContactsRouteParams } from '../../types/navigationTypes';
 import styles from './styles';
 
 interface RightActionProps {
@@ -10,24 +10,30 @@ interface RightActionProps {
 }
 
 const RightActions: React.FC<RightActionProps> = ({ onEdit, onDelete }) => {
-	const route = useRoute<CustomHeaderRouteParams>();
+	const { params } = useRoute<ContactsRouteParams>();
 
-	if (route.params && route.params.contact) {
-		return (
-			<View style={styles.actionWrapper}>
-				<TouchableNativeFeedback onPress={onEdit}>
-					<View>
-						<Icon
-							name="mode"
-							size={20}
-							style={{
-								...styles.icon,
-								...styles.editBtn,
-							}}
-							testID="edit-button"
-						/>
-					</View>
-				</TouchableNativeFeedback>
+	const contact = params?.contact;
+
+	if (!contact) {
+		return null;
+	}
+
+	return (
+		<View style={styles.actionWrapper}>
+			<TouchableNativeFeedback onPress={onEdit}>
+				<View>
+					<Icon
+						name="mode"
+						size={20}
+						style={{
+							...styles.icon,
+							...styles.editBtn,
+						}}
+						testID="edit-button"
+					/>
+				</View>
+			</TouchableNativeFeedback>
+			{contact.id !== 0 && (
 				<TouchableNativeFeedback onPress={onDelete}>
 					<View>
 						<Icon
@@ -41,11 +47,9 @@ const RightActions: React.FC<RightActionProps> = ({ onEdit, onDelete }) => {
 						/>
 					</View>
 				</TouchableNativeFeedback>
-			</View>
-		);
-	}
-
-	return null;
+			)}
+		</View>
+	);
 };
 
 export default RightActions;

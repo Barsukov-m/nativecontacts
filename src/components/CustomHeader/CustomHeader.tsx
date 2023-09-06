@@ -1,51 +1,50 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import {
-	ParamListBase,
-	RouteProp,
-	useNavigation,
-	useRoute,
-} from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import LeftActions from './LeftActions';
 import RightActions from './RightActions';
 import { NavigationParams } from './LeftActions';
 import { useRemoveContactMutation } from 'store/apis/contacts';
-import { ContactInterface } from '../../types/navigationTypes';
+import {
+	ContactInterface,
+	ContactsRouteParams,
+} from '../../types/navigationTypes';
 import { logWarning, wipWarning } from '../../utils/contactsUtils';
 import styles from './styles';
 
-export interface CustomHeaderRouteParams
-	extends RouteProp<ParamListBase, string> {
-	params: {
-		contact: ContactInterface;
+interface CustomHeaderProps {
+	title: string;
+	route: {
+		name: string;
+		params?: {
+			contact?: ContactInterface;
+		};
 	};
 }
 
-const CustomHeader: React.FC<{ title: string }> = ({ title }) => {
-	const route = useRoute<CustomHeaderRouteParams>();
-	const navigation = useNavigation<NavigationParams>();
+const CustomHeader: React.FC<CustomHeaderProps> = ({ title, route }) => {
+	const { navigate } = useNavigation<NavigationParams>();
+
+	const contact = route.params?.contact;
 	const [removeContact] = useRemoveContactMutation();
 
 	const handleEditPress = () => {
-		if (route.params.contact) {
-			wipWarning();
+		if (!contact) {
+			logWarning('Something went wrong', `Contact not found.`);
 		}
+
+		// function that could handle the contact editing
+		wipWarning();
 	};
 
 	const handleDeletePress = async () => {
-		const { id } = route.params.contact;
-
-		console.log('DEBUG:', route.params.contact.id);
-
-		if (id) {
-			await removeContact(id);
-			navigation.navigate('Home');
+		if (!contact || !contact.id) {
+			logWarning('Something went wrong', `Contact not found.`);
+			return;
 		}
 
-		logWarning(
-			'Something went wrong',
-			`Contact with the provided ID: ${id} not found.`
-		);
+		await removeContact(contact.id);
+		navigate('Home');
 	};
 
 	return (
